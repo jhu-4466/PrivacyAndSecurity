@@ -1,7 +1,7 @@
 /*
  * Title: RSA encryption and SHA-1 digests
  * Author: Junkang Hu
- * Date: 30/10/2024
+ * Date: 01/11/2024
  */
 
 import javax.crypto.Cipher;
@@ -16,31 +16,13 @@ import java.time.Duration;
 
 public class DES_PB {
 
-    private static final char[] PASSWORD = "newpassword".toCharArray();
-	
+    private static final char[] PASSWORD = "P@S$W0rD".toCharArray();  // alternative one
     private static final byte[] SALT = { (byte)0xc7, (byte)0x73, (byte)0x21, 
                       (byte)0x8c, (byte)0x7e, (byte)0xc8, (byte)0xee, (byte)0x99 };  // fixed one
     private static final int ITERATION_COUNT = 2048;  // fixed one
 
     public static void main(String[] args) throws Exception {
-        /* 
-         * for loop doesn't work
-         * it may be influenced by java cache strategy
-         */
-        // String[] texts = new String[4];
-        // texts[0] = "P@S$W0rD";
-        // texts[1] = "thisismypassword";
-        // texts[2] = "VeryLongP@$$W0rD";
-        // texts[3] = "%O^t#2Fv0JUjVdRV2RW%";
-
-        // for (String text: texts){
-        //     for (int i = 0; i < 5; i++){
-        //         byte[] ciphertext = encryption(text);
-        //         decryption(ciphertext);
-        //         Thread.sleep(1000);
-        //     }
-        // }
-        byte[] ciphertext = encryption("%O^t#2Fv0JUjVdRV2RW%");
+        byte[] ciphertext = encryption("Hello, World!");
         decryption(ciphertext);
         Thread.sleep(1000);
     }
